@@ -94,12 +94,13 @@ static void __exit my_exit(void)
 {
     struct my_list *data, *tmp;
 
+    pr_debug("......");
     list_for_each_entry_safe(data, tmp, &my_list_head, list_node) {
-        pr_info("%lld\n", data->end - data->start);
+        pr_debug("%lld\n", data->end - data->start);
         list_del(&data->list_node);
         kfree(data);
     }
-    pr_info("Exiting module...\n");
+    pr_debug("Exiting module...\n");
 }
 
 module_init(my_init);
